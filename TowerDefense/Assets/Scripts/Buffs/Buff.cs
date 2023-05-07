@@ -2,6 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public struct BuffInfo
+{
+    public bool active;
+    public BuffType type;
+    public float value;
+
+    public BuffInfo(BuffType _type, float _value)
+    {
+        type = _type;
+        value = _value;
+        active = true;
+    }
+}
+
 public class Buff : Building, IBuff
 {
     [SerializeField] BuffType buffType;

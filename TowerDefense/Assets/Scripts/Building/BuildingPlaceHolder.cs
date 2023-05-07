@@ -14,9 +14,8 @@ public class BuildingPlaceHolder : MonoBehaviour
 
     [Header("Txt")]
     [SerializeField] TMP_Text text;
-
-    List<Buff> buffList = new();
-    List<Turret> turretList = new();
+    readonly List<Buff> buffList = new();
+    readonly List<Turret> turretList = new();
 
     private float currentHeight;
 
@@ -44,7 +43,7 @@ public class BuildingPlaceHolder : MonoBehaviour
         InstantiateBuilding(ref b);
 
         ManageBuilding(b);
-        
+
     }
 
     void InstantiateBuilding(ref Building b)

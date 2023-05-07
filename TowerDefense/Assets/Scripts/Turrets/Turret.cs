@@ -13,6 +13,7 @@ public class Turret : Building, ITurret
     [SerializeField] TurretStats turretStats;
 
     private float elapsed = 0;
+    private BuffInfo pendingBuff;
 
     private Shooter shooter;
     public Shooter TurretShooter { get => shooter; }
@@ -31,6 +32,8 @@ public class Turret : Building, ITurret
 
     void Update()
     {
+        ExecBuff();
+
         elapsed += Time.deltaTime;
         Transform target = shooter.Attack(ref elapsed, transform.position);
 
@@ -48,7 +51,16 @@ public class Turret : Building, ITurret
 
 
     // BUFFS
-    public void SetBuff(BuffType buffType, float value) => shooter.SetBuff(buffType, value);
+    void ExecBuff()
+    {
+        if (pendingBuff.active)
+        {
+            shooter.SetBuff(pendingBuff.type, pendingBuff.value);
+            pendingBuff.active = false;
+        }
+    }
+
+    public void SetBuff(BuffType buffType, float value) => pendingBuff = new(buffType, value);
     
 
     public void RemoveBuff(BuffType buffType, float value) => shooter.RemoveBuff(buffType, value);

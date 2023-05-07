@@ -16,6 +16,11 @@ public class SelectionInfo : ScriptableObject
         availableN = maxInScene;
     }
 
+    public void ResetValues()
+    {
+        availableN = maxInScene;
+    }
+
     public Building GetBuilding()
     {
         return availableN > 0 ? buildingPrefab : null;

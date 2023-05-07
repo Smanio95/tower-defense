@@ -55,7 +55,7 @@ public class Shooter
     public Transform Attack(ref float elapsed, Vector3 origin)
     {
         Transform target = RetrieveTarget(origin);
-        if (elapsed >= rateo && Physics.Raycast(muzzle.position, muzzle.forward, mask))
+        if (target != null && elapsed >= rateo && Physics.Raycast(muzzle.position, muzzle.forward, mask))
         {
             elapsed = 0;
             Shoot();

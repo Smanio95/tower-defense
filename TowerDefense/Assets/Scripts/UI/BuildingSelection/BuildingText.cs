@@ -12,5 +12,10 @@ public class BuildingText : MonoBehaviour
     {
         text.text = selectionInfo.GetUpdatedString();
     }
-    
+
+    private void OnDestroy()
+    {
+        selectionInfo.ResetValues();
+    }
+
 }

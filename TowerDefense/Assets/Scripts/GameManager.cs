@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         BaseController.OnGameOver += GameOver;
+        Time.timeScale = 1;
     }
 
     void GameOver()
